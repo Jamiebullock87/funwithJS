@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+
+<div id="badger" class="hidden">
+	<h1>Activated the secret code!</h1>
+	<img src="badger.jpg" alt="">
+	<p>Here's a picture of a badger!</p>
+</div>
+
+
+<script>
+const pressed = [];
+const secretCode = 'jamie';
+
+window.addEventListener('keyup', (e) => {
+	console.log(e.key);
+	pressed.push(e.key);
+	pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+
+	if (pressed.join('').includes(secretCode)) {
+		console.log('DING DING!');
+		document.getElementById("badger").className = "show";
+		//do mad stuff here!!
+	}
+	console.log(pressed);
+});
+</script>
+</body>
+</html>
